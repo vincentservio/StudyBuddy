@@ -1,0 +1,14 @@
+li {
+  background-color: #2579f7;
+   align-items: center;
+  width:  20rem;
+  height: 26rem;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  border-color: black;
+ 
+  box-shadow: rgba(0, 0, 0, 0.7);
+  color: white;
+  outline: white;
+}

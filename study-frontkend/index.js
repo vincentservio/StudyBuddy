@@ -26,7 +26,7 @@ function attachClickToLinks() {
 
 
     document.getElementById("decks").addEventListener('click', getDecks)
-    document.getElementById("cards").addEventListener('click', getCards)
+    document.getElementById("showcard").addEventListener('click', displayCard)
     document.querySelectorAll("#update-card").forEach(card => card.addEventListener('click', editCard))
     
 }
@@ -36,7 +36,7 @@ function attachClickToLinks() {
 
     function getDecks(){
        clearUls()
-        // clearForm()
+        clearForm()
       
         let showDecks = document.getElementById('show-decks')
         showDecks.innerHTML = ""
@@ -63,7 +63,7 @@ function attachClickToLinks() {
 
     //<====================VIEW CARD ==========>
     function viewCard() {
-        // clearForm()
+        clearForm()
         let category = document.getElementById("showcard")
         let id = event.target.dataset.id 
         category.innerHTML = ""
@@ -74,28 +74,48 @@ function attachClickToLinks() {
                     `
             <li>
             <a href="#" data-id="${deck.id}">${deck.word}</a>
+
 <div><div>
+   <button id = "delete" data-id="${deck.id}">Delete</button>
+            <button id = "update-card" data-id="${deck.id}">Edit</button>
+    
          
         </li>
         `)
               
-                    // attachClickToLinks()
+                    attachClickToLinks()
                   
-        // clearUls()
+        
                 })
 }
-    
+
+//^=================== CLEARFORM===============^
+
+function clearForm() {
+    let cardFormDiv = document.getElementById('card-form')
+
+    cardFormDiv.innerHTML = ""
+}
+
+//<===================== CLEAR ULs ==============>
+function clearUls() {
+    let showCards = document.getElementById('showcard')
+    showCards.innerHTML = ""
+
+    let showDecks = document.getElementById('show-decks')
+    showDecks.innerHTML = ""
+
+    let showDefine = document.getElementById('show-cards')
+    showDefine.innerHTML = ""
+}
+
+     
 
 
 
 
 
 
-
-
-
-
-//<====randomizer====>
 
 
 
@@ -110,46 +130,30 @@ function attachClickToLinks() {
 
 
 // ^=================GET CARDS==============^    
-function getCards() { 
-    clearForm()
-    let main = document.querySelector('#show-cards')
-    main.innerHTML = ""
-    fetch(BASE_URL+"/cards")
-    .then(resp => resp.json())
-    .then(cards => {
-        main.innerHTML += cards.map(card => `
-        <li>
-            <a href="#" data-id="${card.id}">${card.word}</a>
+// function getCards() { 
+//     clearForm()
+//     let main = document.querySelector('#show-cards')
+//     main.innerHTML = ""
+//     fetch(BASE_URL+"/cards")
+//     .then(resp => resp.json())
+//     .then(cards => {
+//         main.innerHTML += cards.map(card => `
+//         <li>
+//             <a href="#" data-id="${card.id}">${card.word}</a>
 
-            <button id = "delete" data-id="${card.id}">Delete</button>
-            <button id = "update-card" data-id="${card.id}">Edit</button>
-        </li>
-        `)
+//             <button id = "delete" data-id="${card.id}">Delete</button>
+//             <button id = "update-card" data-id="${card.id}">Edit</button>
+//         </li>
+//         `)
 
       
-        attachClickToLinks()
-            // < i data - action='delete-note' class="em em-x" ></i >
-    })
+//         attachClickToLinks()
+//             // < i data - action='delete-note' class="em em-x" ></i >
+//     })
     
-}
-
-
-//^=================== CLEARFORM===============^
-
-// function clearForm(){
-//     let cardFormDiv = document.getElementById('card-form').firstElementChild
-
-//     cardFormDiv.innerHTML = ""
 // }
 
-//<===================== CLEAR ULs ==============>
-function clearUls(){
-let showCards = document.getElementById('showcard')
-showCards.innerHTML = ""
 
-let showDecks = document.getElementById('show-decks')
-showDecks.innerHTML = ""
-}
 
 
 
@@ -170,6 +174,9 @@ function displayCard() {
          <h3>${card.define}</h3>
         <p>${card.gotit ? "Got It" : "Dont Got It"} </p>
         `
+        attachClickToLinks()
+        clearForm()
+     
     })
 
 
@@ -195,7 +202,10 @@ function displayCreateForm() {
          </form>
     `
     cardFormDiv.innerHTML = html
-    document.querySelector('form').addEventListener('submit', createCard)
+    document.querySelector('form').addEventListener('submit', () => {
+        createCard()
+        clearForm()
+    } )
 }
 
 //^===============  CREATE CARD =======================^
@@ -316,7 +326,7 @@ function updateCard(){
         </li>
         `
         attachClickToLinks()
-       
+       clearForm()
     })
 
 }

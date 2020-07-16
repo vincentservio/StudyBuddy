@@ -11,14 +11,14 @@ function attachClickToLinks() {
     let cards = document.querySelectorAll('li a')
     cards.forEach(card => {
         card.addEventListener('click', () => {
-            clearUls()
+            // clearUls()
             viewCard()
 
         })
     })
 
 
-    document.getElementById("next").addEventListener('click', nextfunc)
+    // document.getElementById("next").addEventListener('click', nextfunc)
     document.getElementById("cardForm").addEventListener('click', displayCreateForm)
     document.querySelectorAll("#delete").forEach(card => card.addEventListener('click', removeCard))
 

@@ -2,6 +2,7 @@
 
 function displayCard() {
     clearForm()
+    clearUls()
     let id = event.target.dataset.id
     let main = document.getElementById('show-cards')
     main.innerHTML = ""
@@ -9,14 +10,15 @@ function displayCard() {
         .then(resp => resp.json())
         .then(card => {
             main.innerHTML += `
+            <p style="color:red:"> previous answers will appear here:</p>
        <h1>${card.word}</h1>
          <h3>${card.define}</h3>
         <p>${card.gotit ? "Got It" : "Dont Got It"} </p>
         `
             attachClickToLinks()
+           
 
-
-            document.getElementById("next").addEventListener('click', viewCard)
+// document.getElementById("next").addEventListener('click', viewCard)
 
 
 

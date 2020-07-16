@@ -1,24 +1,23 @@
 
 
-//<====================VIEW CARD ==========>
-function viewCard() {
-    clearForm()
-    clearUls()
-    let category = document.getElementById("showcard")
-    let id = event.target.dataset.id
-
-    fetch(BASE_URL + "/decks/" + id)
-        .then(resp => resp.json())
-        .then(deck => {
-            let random = Math.floor(Math.random() * deck.cards.length)
-            let card = deck.cards[random]
-
-            category.innerHTML +=
-
-
-
-                //                   
-                `
+    //<====================VIEW CARD ==========>
+    function viewCard() {
+        clearForm()
+        let category = document.getElementById("showcard")
+        let id = event.target.dataset.id 
+        category.innerHTML = ""
+        fetch(BASE_URL+"/decks/"+id)
+            .then(resp => resp.json())
+            .then(deck => {
+                let random = Math.floor(Math.random() * deck.cards.length)
+                let card = deck.cards[random]
+         
+            category.innerHTML += 
+                    
+                            
+                    
+//                   
+  `
             <li>
             <a href="#" data-id="${card.id}">${card.word}</a>
 
@@ -30,12 +29,12 @@ function viewCard() {
         </li>
 
 
-        `
+        `   
 
-            attachClickToLinks()
-        })
-
-
-
-
-}
+                attachClickToLinks()
+                    })
+              
+                   
+                  
+        
+                }

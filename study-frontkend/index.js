@@ -1,8 +1,8 @@
 const BASE_URL = 'http://localhost:3000'
 
 window.addEventListener('load', () => {
-  
     getDecks()
+
 })
 
 //^================== CLICKS =====================^
@@ -11,7 +11,7 @@ function attachClickToLinks() {
     let cards = document.querySelectorAll('li a')
     cards.forEach(card => {
         card.addEventListener('click', () => {
-            // clearUls()
+           
             viewCard()
 
         })
@@ -25,7 +25,7 @@ function attachClickToLinks() {
 
 
     document.getElementById("decks").addEventListener('click', getDecks)
-    document.getElementById("showcard").addEventListener('click', displayCard)
+    // document.getElementById("li").addEventListener('click', displayCard)
     document.querySelectorAll("#update-card").forEach(card => card.addEventListener('click', editCard))
     
 }

@@ -16,9 +16,9 @@ function displayCard() {
         <p>${card.gotit ? "Got It" : "Dont Got It"} </p>
         `
             attachClickToLinks()
-           
+            clearUls()
 
-// document.getElementById("next").addEventListener('click', viewCard)
+document.getElementById("next").addEventListener('click', viewCard)
 
 
 

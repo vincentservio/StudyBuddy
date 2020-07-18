@@ -8,17 +8,35 @@ window.addEventListener('load', () => {
 //^================== CLICKS =====================^
 
 function attachClickToLinks() {
-    let cards = document.querySelectorAll('li a')
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-           
-            viewCard()
-
-        })
+    let aTag = document.querySelector('li a')
+    aTag.addEventListener('click', () => {
+        randCard()
     })
 
 
     // document.getElementById("next").addEventListener('click', nextfunc)
+    document.getElementById("cardForm").addEventListener('click', displayCreateForm)
+    document.getElementById("deckForm").addEventListener('click', displayCreateDeckForm)
+    document.querySelectorAll("#delete").forEach(card => card.addEventListener('click', removeCard))
+    document.querySelector("#define").addEventListener("click", displayCard)
+
+
+    document.getElementById("decks").addEventListener('click', getDecks)
+    // document.getElementById("showcard").addEventListener('click', displayCard)
+    document.querySelectorAll("#update-card").forEach(card => card.addEventListener('click', editCard))
+    
+}
+
+function attachClickToLinks2(){
+
+    let cards = document.querySelectorAll('li a')
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+
+            viewCard()
+
+        })
+    })
     document.getElementById("cardForm").addEventListener('click', displayCreateForm)
     document.getElementById("deckForm").addEventListener('click', displayCreateDeckForm)
     document.querySelectorAll("#delete").forEach(card => card.addEventListener('click', removeCard))
@@ -28,10 +46,8 @@ function attachClickToLinks() {
     document.getElementById("decks").addEventListener('click', getDecks)
     // document.getElementById("showcard").addEventListener('click', displayCard)
     document.querySelectorAll("#update-card").forEach(card => card.addEventListener('click', editCard))
-    
+
 }
-
-
 
 //^========== RANDOMIZER =========^
 function randomizer(min, max){

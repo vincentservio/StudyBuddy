@@ -20,18 +20,13 @@ function viewCard() {
             <br>
             <button id = "delete" data-id="${card.id}">Delete</button>
             <button id = "update-card" data-id="${card.id}">Edit</button>
-            <button id ="define">Next</button>
+            <button id ="define" data-id="${card.id}">Next</button>
         </li>
         `   
-        let aTag = document.querySelector('li a')
-        aTag.addEventListener('click', () => {
-            randCard()
-        })
-        
+      attachClickToLinks()
     })
 }
 
-            
                 
         
 function randCard() {
@@ -45,31 +40,24 @@ function randCard() {
         let random = Math.floor(Math.random() * deck.cards.length)
         let card = deck.cards[random]
         category.innerHTML +=
-        `<h1>${deck.category}</h1>
+        `
+        <h1>${deck.category}</h1>
         <li>
             <a href="#" data-id="${card.id}" data-deck-id="${deck.id}">${card.word}</a>
             <br>
             <button id = "delete" data-id="${card.id}">Delete</button>
             <button id = "update-card" data-id="${card.id}">Edit</button>
-            <button id ="next">Next</button>
+            <button id ="define" data-id="${card.id}">Definition</button>
         
         </li>
         `
-        let cards = document.querySelectorAll('li a')
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                randCard()
-            })
-        })
-        document.getElementById("cardForm").addEventListener('click', displayCreateForm)
+        attachClickToLinks()
+      
+    })
 
-        document.getElementById("decks").addEventListener('click', getDecks)
-        })
-
-    }
+}
    
-
-
+//^==============
 
 
 

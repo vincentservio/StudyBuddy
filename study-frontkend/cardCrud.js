@@ -1,8 +1,8 @@
-//^================ DISPLAYCARD ====================^
+//^================ ShowCARD ====================^
 
 function displayCard() {
     clearForm()
-    clearUls()
+  clearForm()
     let id = event.target.dataset.id
     let main = document.getElementById('show-cards')
     main.innerHTML = ""
@@ -15,10 +15,10 @@ function displayCard() {
          <h3>${card.define}</h3>
         <p>${card.gotit ? "Got It" : "Dont Got It"} </p>
         `
-            attachClickToLinks()
-            clearUls()
+            // attachClickToLinks()
+            // clearUls()
 
-document.getElementById("next").addEventListener('click', viewCard)
+// document.getElementById("next").addEventListener('click', viewCard)
 
 
 
@@ -50,8 +50,9 @@ function displayCreateForm() {
          </form>
     `
     cardFormDiv.innerHTML = html
-    document.querySelector('form').addEventListener('submit', () => {
-        createCard()
+    const newLocal = document.querySelector('form')
+    newLocal.addEventListener('submit', () => {
+        updateCard()
         clearForm()
     })
 }
@@ -112,7 +113,7 @@ function removeCard() {
         }
     })
         .then(event.target.parentElement.remove())
-        .then(getCards())
+        .then(randCard())
 
 
 }

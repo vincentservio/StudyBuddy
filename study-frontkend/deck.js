@@ -11,7 +11,7 @@ function getDecks() {
             showDecks.innerHTML += decks.map(deck =>
                 `
             <li>
-            <a href="#" data-id="${deck.id}">${deck.category}</a>
+            <a href="#" data-id="${deck.id}" deck-data-id="${deck.id}">${deck.category}</a>
          
         </li>
         `)

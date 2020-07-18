@@ -36,7 +36,7 @@ function displayCreateForm() {
     let cardFormDiv = document.getElementById('card-form')
     let html = `
         <form>
-        <input type="text" id="word" placeholder="Word">
+        <input type="text" id="category" placeholder="Category">
         <br>
             <label>Create Word</label>
             <input type="text" id="word" placeholder="Word">
@@ -65,7 +65,7 @@ function createCard() {
     const card = {
         word: document.getElementById('word').value,
         define: document.getElementById('define').value,
-        category: document.getElementById('catagory').value,
+        // category: document.getElementById('catagory').value,
         gotit: document.getElementById("gotit").checked
 
     }
@@ -84,7 +84,7 @@ function createCard() {
         .then(card => {
             document.querySelector('#show-cards').innerHTML += `
         <li>
-            <a href="#" data-id="${card.id}">${card.word}: ${card.define} ${catagory}
+            <a href="#" data-id="${card.id}">${card.word}: ${card.define}
         - ${card.gotit ? "Got it" : "Dont got it"}<a/>
           
 

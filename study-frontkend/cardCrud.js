@@ -2,7 +2,7 @@
 
 function displayCard() {
     clearForm()
-  clearForm()
+    // clearUls()
     let id = event.target.dataset.id
     let main = document.getElementById('show-cards')
     main.innerHTML = ""
@@ -15,7 +15,7 @@ function displayCard() {
          <h3>${card.define}</h3>
         <p>${card.gotit ? "Got It" : "Dont Got It"} </p>
         `
-            // attachClickToLinks()
+            attachClickToLinks()
             // clearUls()
 
 // document.getElementById("next").addEventListener('click', viewCard)
@@ -33,13 +33,17 @@ function displayCard() {
 // ^=============== CREATE CARD OPTION ==============^
 
 function displayCreateForm() {
+    let category = document.getElementById("showcard")
+ 
     let cardFormDiv = document.getElementById('card-form')
     let html = `
         <form>
-        <input type="text" id="category" placeholder="Category">
+        <input id="category" 
+        value="${category.firstChild.innerHTML}"
+        >
         <br>
             <label>Create Word</label>
-            <input type="text" id="word" placeholder="Word">
+            <input type="text" id="word" placeholder="Word" >
             <textarea id="define" rows="4" cols="50"
                 placeholder="Definition - The degree of distinctness in outline of an object, image, or sound, especially of an image in a photograph or on a screen."></textarea>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Example</a>
@@ -50,10 +54,10 @@ function displayCreateForm() {
          </form>
     `
     cardFormDiv.innerHTML = html
-    const newLocal = document.querySelector('form')
-    newLocal.addEventListener('submit', () => {
-        updateCard()
+    document.querySelector('form').addEventListener('submit', () => {
+        createCard()
         clearForm()
+        
     })
 }
 
@@ -64,12 +68,15 @@ function displayCreateForm() {
 function createCard() {
     event.preventDefault()
     const card = {
+        // deck_id: document.querySelector('li a').dataset.deckId,
+
         word: document.getElementById('word').value,
         define: document.getElementById('define').value,
-        // category: document.getElementById('catagory').value,
-        gotit: document.getElementById("gotit").checked
+           gotit: document.getElementById("gotit").checked
+}
 
-    }
+
+              // let deckId = event.target.dataset.id
 
 
     fetch(BASE_URL + '/cards', {
@@ -81,22 +88,26 @@ function createCard() {
 
         }
     })
-        .then(resp => resp.json())
-        .then(card => {
-            document.querySelector('#show-cards').innerHTML += `
-        <li>
-            <a href="#" data-id="${card.id}">${card.word}: ${card.define}
-        - ${card.gotit ? "Got it" : "Dont got it"}<a/>
+    
+
+        // .then(resp => resp.json())
+        // .then(card => card)
+        //     document.querySelector('#show-cards').innerHTML += `
+        // <li>
+        //     <a href="#" data-id="${card.id}"  > ${card.word}: ${card.define}
+        // - ${card.gotit ? "Got it" : "Dont got it"}<a/>
           
 
-            <button id = "delete" data-id="${card.id}">Delete</button>
-            <button id = "update-card" data-id="${card.id}">Edit</button>
+        //     <button id = "delete" data-id="${card.id}">Delete</button>
+        //     <button id = "update-card" data-id="${card.id}">Edit</button>
     
-        </li>
-        `
+        // </li>
+        // `
             attachClickToLinks()
             clearForm()
-        })
+   let me =  document.getElementById("cardForm").addEventListener('click', clearForm)
+me
+        
 }
 
 //^========== DELETE CARDS ==============^
@@ -113,7 +124,7 @@ function removeCard() {
         }
     })
         .then(event.target.parentElement.remove())
-        .then(randCard())
+        .then(getCards())
 
 
 }
@@ -130,6 +141,7 @@ function editCard() {
             let html = `
         <form data-id="${id}">
             <label>Create</label>
+            
             <input type="text" id="word" value='${card.word}'>
            
             <textarea type="text" id="define" 
@@ -140,7 +152,12 @@ function editCard() {
             <input type="submit"> 
          </form>
     `
+          
             cardFormDiv.innerHTML = html
+            document.querySelector('form').addEventListener('submit', () => {
+                updateCard()
+                clearForm()
+            })
 
         })
 }
@@ -175,8 +192,9 @@ function updateCard() {
             <button id = "update-card" data-id="${card.id}">Edit</button>
         </li>
         `
-            attachClickToLinks()
+        
             clearForm()
+            displayCard()
         })
-
+        
 }

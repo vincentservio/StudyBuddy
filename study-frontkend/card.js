@@ -14,16 +14,17 @@ function viewCard() {
         let card = deck.cards[random]
     
         category.innerHTML += 
-        `<h1>${deck.category}</h1>
+        `<h1>${deck.category}</h1>  
         <li>
             <a href="#" data-id="${card.id}" data-deck-id="${deck.id}">${card.word}</a>
             <br>
             <button id = "delete" data-id="${card.id}">Delete</button>
             <button id = "update-card" data-id="${card.id}">Edit</button>
-            <button id ="define" data-id="${card.id}">Next</button>
+            <button id ="define" data-id="${card.id}">Define</button>
         </li>
         `   
-      attachClickToLinks()
+        changeCard()
+    attachClickToLinks()
     })
 }
 
@@ -51,7 +52,9 @@ function randCard() {
         
         </li>
         `
+        changeCard()
         attachClickToLinks()
+        
       
     })
 

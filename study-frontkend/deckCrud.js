@@ -66,7 +66,7 @@ function createDeck() {
 
             document.querySelector('#show-cards').innerHTML += `
             <li>
-                <a href="#" data-id="${deck.id}">${deck.catagory}
+                <a href="#" data-id="${deck.id}">${deck.category}
 
 
 

@@ -25,15 +25,7 @@ function getDecks() {
 
                 })
             })
-            document.getElementById("cardForm").addEventListener('click', displayCreateForm)
-            document.getElementById("deckForm").addEventListener('click', displayCreateDeckForm)
-            document.querySelectorAll("#delete").forEach(card => card.addEventListener('click', removeCard))
-
-
-
-            document.getElementById("decks").addEventListener('click', getDecks)
-            // document.getElementById("showcard").addEventListener('click', displayCard)
-            document.querySelectorAll("#update-card").forEach(card => card.addEventListener('click', editCard))
+        //   attachClickToLinks()
 
 
 

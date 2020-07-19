@@ -6,20 +6,25 @@ window.addEventListener('load', () => {
 })
 
 //^================== CLICKS =====================^
-
-function attachClickToLinks() {
-    let aTag = document.querySelector('li a')
+function changeCard() {
+        let aTag = document.querySelector('li a')
     aTag.addEventListener('click', () => {
         randCard()
     })
+}
+
+
+function attachClickToLinks() {
+
 
 
     // document.getElementById("next").addEventListener('click', nextfunc)
     document.getElementById("cardForm").addEventListener('click', displayCreateForm)
     document.getElementById("deckForm").addEventListener('click', displayCreateDeckForm)
-    document.querySelectorAll("#delete").forEach(card => card.addEventListener('click', removeCard))
+    document.querySelector("#delete").addEventListener('click', removeCard)
     document.querySelector("#define").addEventListener("click", displayCard)
 
+    document.getElementById("cardForm").addEventListener('click', displayCreateForm)
 
     document.getElementById("decks").addEventListener('click', getDecks)
     // document.getElementById("showcard").addEventListener('click', displayCard)
@@ -27,35 +32,35 @@ function attachClickToLinks() {
     
 }
 
-function attachClickToLinks2(){
+// function attachClickToLinks2(){
 
-    let cards = document.querySelectorAll('li a')
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
+//             // let cards = document.querySelectorAll('li a')
+//             // cards.forEach(card => {
+//             //     card.addEventListener('click', () => {
 
-            viewCard()
+//             //         viewCard()
 
-        })
-    })
-    document.getElementById("cardForm").addEventListener('click', displayCreateForm)
-    document.getElementById("deckForm").addEventListener('click', displayCreateDeckForm)
-    document.querySelectorAll("#delete").forEach(card => card.addEventListener('click', removeCard))
+//             //     })
+//             // })
+//             document.getElementById("cardForm").addEventListener('click', displayCreateForm)
+//             document.getElementById("deckForm").addEventListener('click', displayCreateDeckForm)
+//             document.querySelectorAll("#delete").forEach(card => card.addEventListener('click', removeCard))
 
 
 
-    document.getElementById("decks").addEventListener('click', getDecks)
-    // document.getElementById("showcard").addEventListener('click', displayCard)
-    document.querySelectorAll("#update-card").forEach(card => card.addEventListener('click', editCard))
+//             document.getElementById("decks").addEventListener('click', getDecks)
+//             // document.getElementById("showcard").addEventListener('click', displayCard)
+//             document.querySelectorAll("#update-card").forEach(card => card.addEventListener('click', editCard))
 
-}
+// }
 
-//^========== RANDOMIZER =========^
-function randomizer(min, max){
-let num = max - min + 1
-let random = Math.random() * num
-let result = Math.floor(random) + min
-return result
-}
+// //^========== RANDOMIZER =========^
+// function randomizer(min, max){
+// let num = max - min + 1
+// let random = Math.random() * num
+// let result = Math.floor(random) + min
+// return result
+// }
 
 
 

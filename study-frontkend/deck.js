@@ -1,35 +1,40 @@
 
-function getDecks() {
+const getDecks = () => {
     clearUls()
     clearForm()
 
     let showDecks = document.getElementById('show-decks')
-    showDecks.innerHTML = ""
-    fetch(BASE_URL + "/decks")
-        .then(resp => resp.json())
-        .then(decks => {
-            showDecks.innerHTML += decks.map(deck =>
-                `
-            <li>
-            <a href="#" data-id="${deck.id}" deck-data-id="${deck.id}">${deck.category}</a>
-         
-        </li>
-        `)
-
-
-            let cards = document.querySelectorAll('li a')
-            cards.forEach(card => {
-                card.addEventListener('click', () => {
-
-                    viewCard()
-
-                })
-            })
-        //   attachClickToLinks()
-
-
-
+   
+    fetch(BASE_URL+"/decks")
+    .then(resp => resp.json())
+    .then(decks => {
+        decks.forEach(deck =>{
+            let dk = new Dk(deck)
+            // attachClickToLinks()
+            showDecks.innerHTML += dk.renderDeck()
         })
-
+        attachClickToDeck()
+    })
 }
+ 
+    
+class Dk {
+    constructor(deck){
+         this.id = deck.id
+         this.category = deck.category 
+    }
+
+    renderDeck() {
+        return  `
+    <li>
+        <a href="#" data-id="${this.id}">${this.category}</a>
+    </li>
+    `
+    }
+}
+
+
+        
+
+
 

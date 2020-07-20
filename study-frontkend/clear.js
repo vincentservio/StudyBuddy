@@ -1,13 +1,12 @@
 //^=================== CLEARFORM===============^
 
-function clearForm() {
+const clearForm = () => {
     let cardFormDiv = document.getElementById('card-form')
-
     cardFormDiv.innerHTML = ""
 }
 
 //<===================== CLEAR ULs ==============>
-function clearUls() {
+const clearUls = () => {
     let showCards = document.getElementById('showcard')
     showCards.innerHTML = ""
 

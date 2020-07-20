@@ -46,6 +46,6 @@ class CardsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def card_params
-      params.require(:card).permit(:word, :define, :gotit)
+      params.require(:card).permit(:word, :define, :gotit, :deck_id)
     end
 end

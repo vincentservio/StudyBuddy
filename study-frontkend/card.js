@@ -1,69 +1,66 @@
 
 
     //<====================VIEW CARD ==========>
-function viewCard() {
+const viewCard = () => {
     clearForm()
     clearUls()
-    let category = document.getElementById("showcard")
+    let showcard = document.getElementById("showcard")
     let id = event.target.dataset.id 
-    // category.innerHTML = ""
     fetch(BASE_URL+"/decks/"+id)
     .then(resp => resp.json())
     .then(deck => {
         let random = Math.floor(Math.random() * deck.cards.length)
         let card = deck.cards[random]
-    
-        category.innerHTML += 
-        `<h1>${deck.category}</h1>  
-        <li>
-            <a href="#" data-id="${card.id}" data-deck-id="${deck.id}">${card.word}</a>
-            <br>
-            <button id = "delete" data-id="${card.id}">Delete</button>
-            <button id = "update-card" data-id="${card.id}">Edit</button>
-            <button id ="define" data-id="${card.id}">Define</button>
-        </li>
-        `   
+        let cd = new Cd(card)
+        showcard.innerHTML += cd.renderCard()
         changeCard()
-    attachClickToLinks()
+        attachClickToLinks()
     })
 }
 
-                
-        
-function randCard() {
+const randCard = () => {
     clearForm()
     clearUls()
-    let category = document.getElementById("showcard")
+    let showcard = document.getElementById("showcard")
     let deckId = event.target.dataset.deckId 
     fetch(BASE_URL +"/decks/"+deckId)
     .then(resp => resp.json())
     .then(deck => {
         let random = Math.floor(Math.random() * deck.cards.length)
         let card = deck.cards[random]
-        category.innerHTML +=
-        `
-        <h1>${deck.category}</h1>
-        <li>
-            <a href="#" data-id="${card.id}" data-deck-id="${deck.id}">${card.word}</a>
-            <br>
-            <button id = "delete" data-id="${card.id}">Delete</button>
-            <button id = "update-card" data-id="${card.id}">Edit</button>
-            <button id ="define" data-id="${card.id}">Definition</button>
-        
-        </li>
-        `
-        changeCard()
-        attachClickToLinks()
-        
-      
+        let cd = new Cd(card)
+        showcard.innerHTML += cd.renderCard()
+    changeCard()
+    attachClickToLinks()
     })
 
 }
-   
-//^==============
+class Cd {
+    constructor(card){
+        this.id = card.id
+        this.word = card.word
+        this.define = card.define 
+        this.gotit = card.gotit
+        this.deck_id = card.deck_id
 
+    }
+    renderCard() {
+        return `
+        <li>
+            <a href="#" data-id="${this.id}" data-deck-id="${this.deck_id}">${this.word}</a>
+            <br> 
+            <button id = "delete" data-id="${this.id}">Delete</button>
+            <button id = "update-card" data-id="${this.id}">Edit</button>
+            <button id ="define" data-id="${this.id}">Define</button>
 
+        </li>
+             <button id = "cardForm" href = "#"> Create Card</button >
 
+        `   
+          
+
+    }
+}
 
     
     

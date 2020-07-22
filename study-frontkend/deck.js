@@ -9,7 +9,7 @@ const getDecks = () => {
     .then(resp => resp.json())
     .then(decks => {
         decks.forEach(deck =>{
-            let dk = new Dk(deck)
+            let dk = new Deck(deck)
             // attachClickToLinks()
             showDecks.innerHTML += dk.renderDeck()
         })
@@ -18,7 +18,7 @@ const getDecks = () => {
 }
  
     
-class Dk {
+class Deck {
     constructor(deck){
          this.id = deck.id
          this.category = deck.category 

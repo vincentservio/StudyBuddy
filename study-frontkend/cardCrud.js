@@ -14,6 +14,7 @@ const displayCard = () => {
     <p>${card.gotit ? "Got It" : "Dont Got It"} </p>
     `
     attachClickToLinks()
+    
     })
 }
 
@@ -46,16 +47,14 @@ const displayCreateForm = () => {
 
 const createCard = () => {
     event.preventDefault()
-    deck_id = document.querySelector('li a').dataset.deckId
-    word = document.getElementById('word').value
-    define = document.getElementById('define').value
-    gotit = document.getElementById("gotit").checked
+   
     const card = {
-        deck_id: deck_id,
-        word: word,
-        define: define,
-        gotit: gotit,
-    }
+        deck_id: document.querySelector('li a').dataset.deckId,
+        word: document.getElementById("word").value,
+        define: document.getElementById("define").value,
+        gotit: document.getElementById("gotit").value
+
+    };
 
     fetch(BASE_URL+'/cards', {
         method: "POST",
@@ -76,7 +75,6 @@ const createCard = () => {
 //^========== DELETE CARDS ==============^
 
 const removeCard = () => {
-
     event.preventDefault()
     clearForm()
     fetch(BASE_URL + `/cards/${event.target.dataset.id}`, {
@@ -88,8 +86,6 @@ const removeCard = () => {
     })
         .then(event.target.parentElement.remove())
         .then(getDecks())
-
-
 }
 
 //^======================= EDIT CARDS =================^
@@ -107,7 +103,6 @@ const editCard = () => {
             <input type="text" id="word" value='${card.word}'>
             <textarea type="text" id="define" 
                 rows="4" cols="50" >${card.define}</textarea>
-
             <label>Got it?</label>
             <input type="checkbox" id="gotit" ${card.gotit ? "gotit" : ""}>
             <input type="submit"> 
@@ -118,7 +113,6 @@ const editCard = () => {
             updateCard()
             clearForm()
         })
-
     })
 }
 //^=================== UPDATE EDIT CARD ==============^
@@ -145,12 +139,17 @@ const updateCard = () => {
         .then(card => {
             let cd = new CreateEditCard(card)
             cd.returnCreate()
- 
-        
             clearForm()
             attachClickToLinks()
         })
         
+}
+
+const createCardBtn = () => {
+    const page = document.getElementById('CardBtn')
+    page.innerHTML += `       
+          <button id = "CardBtn" href = "#"> Create Card</button >
+        `;
 }
 
 class CreateEditCard {

@@ -10,7 +10,7 @@ const changeCard = () =>  {
     aTag.addEventListener('click', () => {
         randCard()
     })
-    document.getElementById("cardForm").addEventListener('click', displayCreateForm)
+    document.getElementById("CardBtn").addEventListener('click', displayCreateForm)
 
 }
 
@@ -21,16 +21,16 @@ const attachClickToDeck = () => {
             viewCard()
         })
     })
-    document.getElementById("deckForm").addEventListener('click', displayCreateDeckForm)
+    document
+      .getElementById("CardBtn").addEventListener("click", displayCreateDeckForm);
     document.getElementById("decks").addEventListener('click', getDecks)
 }
 
 const attachClickToLinks = () =>  {
-    document.getElementById("cardForm").addEventListener('click', displayCreateForm)
-    document.getElementById("deckForm").addEventListener('click', displayCreateDeckForm)
+    document
+      .getElementById("CardBtn").addEventListener("click", displayCreateDeckForm);
     document.querySelector("#delete").addEventListener('click', removeCard)
     document.querySelector("#define").addEventListener("click", displayCard)
-    document.getElementById("cardForm").addEventListener('click', displayCreateForm)
     document.getElementById("decks").addEventListener('click', getDecks)
     document.querySelectorAll("#update-card").forEach(card => card.addEventListener('click', editCard))
     

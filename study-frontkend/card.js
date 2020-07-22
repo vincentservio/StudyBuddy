@@ -9,15 +9,24 @@ const viewCard = () => {
     fetch(BASE_URL+"/decks/"+id)
     .then(resp => resp.json())
     .then(deck => {
-        let random = Math.floor(Math.random() * deck.cards.length)
-        let card = deck.cards[random]
-        let cd = new Cd(card)
-        showcard.innerHTML += cd.renderCard()
-        changeCard()
-        attachClickToLinks()
+        if (deck.cards.length == 0) {
+            createCardBtn()
+            attachClickToLinks()
+        }else {
+
+            let random = Math.floor(Math.random() * deck.cards.length)
+            let card = deck.cards[random]
+            let cd = new Card(card)
+            showcard.innerHTML += cd.renderCard()
+            createCardBtn();
+
+            changeCard()
+            attachClickToLinks()
+        }
     })
 }
 
+// ^======= Random Card =======^
 const randCard = () => {
     clearForm()
     clearUls()
@@ -28,14 +37,14 @@ const randCard = () => {
     .then(deck => {
         let random = Math.floor(Math.random() * deck.cards.length)
         let card = deck.cards[random]
-        let cd = new Cd(card)
+        let cd = new Card(card)
         showcard.innerHTML += cd.renderCard()
     changeCard()
     attachClickToLinks()
     })
 
 }
-class Cd {
+class Card {
     constructor(card){
         this.id = card.id
         this.word = card.word
@@ -54,11 +63,7 @@ class Cd {
             <button id ="define" data-id="${this.id}">Define</button>
 
         </li>
-             <button id = "cardForm" href = "#"> Create Card</button >
-
         `   
-          
-
     }
 }
 

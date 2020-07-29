@@ -4,7 +4,8 @@ const getDecks = () => {
     clearForm()
 
     let showDecks = document.getElementById('show-decks')
-   
+    let CardBtn = document.getElementById("CardBtn")
+    CardBtn.innerHTML = ""
     fetch(BASE_URL+"/decks")
     .then(resp => resp.json())
     .then(decks => {
@@ -29,6 +30,7 @@ class Deck {
     <li>
         <a href="#" data-id="${this.id}">${this.category}</a>
     </li>
+    <br>
     `
     }
 }

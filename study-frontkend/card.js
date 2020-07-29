@@ -63,6 +63,7 @@ class Card {
             <button id ="define" data-id="${this.id}">Define</button>
 
         </li>
+        
         `   
     }
 }

@@ -15,6 +15,7 @@ const displayCreateDeckForm = () => {
     document.querySelector('form').addEventListener('submit', () => {
         createDeck()
         clearForm()
+        getDecks()
     })
 }
 

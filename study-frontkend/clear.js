@@ -15,4 +15,6 @@ const clearUls = () => {
 
     let showDefine = document.getElementById('show-cards')
     showDefine.innerHTML = ""
+
+    
 }

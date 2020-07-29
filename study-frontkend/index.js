@@ -22,13 +22,13 @@ const attachClickToDeck = () => {
         })
     })
     document
-      .getElementById("CardBtn").addEventListener("click", displayCreateDeckForm);
+      .getElementById("deckForm").addEventListener("click", displayCreateDeckForm);
     document.getElementById("decks").addEventListener('click', getDecks)
 }
 
 const attachClickToLinks = () =>  {
     document
-      .getElementById("CardBtn").addEventListener("click", displayCreateDeckForm);
+      .getElementById("CardBtn").addEventListener("click", displayCreateForm);
     document.querySelector("#delete").addEventListener('click', removeCard)
     document.querySelector("#define").addEventListener("click", displayCard)
     document.getElementById("decks").addEventListener('click', getDecks)

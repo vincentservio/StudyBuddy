@@ -97,19 +97,18 @@ const editCard = () => {
     .then(resp => resp.json())
     .then(card => {
         let cardFormDiv = document.getElementById('card-form')
-        let cd = new CreateEditCard(card)
-        cd.returnCreate()
-        // let html = `
-        // <form data-id="${id}">
-        //     <label>Create</label>
-        //     <input type="text" id="word" value='${card.word}'>
-        //     <textarea type="text" id="define" 
-        //         rows="4" cols="50" >${card.define}</textarea>
-        //     <label>Got it?</label>
-        //     <input type="checkbox" id="gotit" ${card.gotit ? "gotit" : ""}>
-        //     <input type="submit"> 
-        // </form>
-        // `
+
+        let html = `
+        <form data-id="${id}">
+            <label>Create</label>
+            <input type="text" id="word" value='${card.word}'>
+            <textarea type="text" id="define" 
+                rows="4" cols="50" >${card.define}</textarea>
+            <label>Got it?</label>
+            <input type="checkbox" id="gotit" ${card.gotit ? "gotit" : ""}>
+            <input type="submit"> 
+        </form>
+        `
         cardFormDiv.innerHTML = html
         document.querySelector('form').addEventListener('submit', () => {
             updateCard()

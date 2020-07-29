@@ -1,6 +1,7 @@
 li {
-  background-color: #2579f7;
-   align-items: center;
+text-align: center;
+
+  background-color: #6425f7;
   width:  20rem;
   height: 26rem;
   border-radius: 6px;
@@ -11,4 +12,21 @@ li {
   box-shadow: rgba(0, 0, 0, 0.7);
   color: white;
   outline: white;
+align-items: center;
+
+
+}
+
+a:link {
+text-align: center;
+font-size: 32px;
+
+color: pink;
+
+
+
+  font-family: sans-serif;
+background-color: white;
+text-decoration: none;
+
 }

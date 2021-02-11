@@ -15,6 +15,9 @@ const changeCard = () =>  {
 }
 
 const attachClickToDeck = () => {
+// document.getElementById("sortDecks").addEventListener('click', sortDecks)
+
+
     let cards = document.querySelectorAll('li a')
     cards.forEach(card => {
         card.addEventListener('click', () => {
@@ -27,8 +30,7 @@ const attachClickToDeck = () => {
 }
 
 const attachClickToLinks = () =>  {
-    document
-      .getElementById("CardBtn").addEventListener("click", displayCreateForm);
+    document.getElementById("CardBtn").addEventListener("click", displayCreateForm);
     document.querySelector("#delete").addEventListener('click', removeCard)
     document.querySelector("#define").addEventListener("click", displayCard)
     document.getElementById("decks").addEventListener('click', getDecks)

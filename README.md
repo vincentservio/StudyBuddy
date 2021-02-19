@@ -1,17 +1,17 @@
 # StudyBuddy
+
 This JavaScript/Rails Application is intended to keep track of flash cards.
 
-
-
 ## Installation
-Fork and Clone repository. Cd into StudyBuddy Backend,  Run "rails s" and visit .../StudyBuddy/study-frontkend/index.html to run 
 
+Fork and Clone repository. Cd into StudyBuddy Backend, Run "rails s" and visit .../StudyBuddy/study-frontkend/index.html to run dfdfd
 
 And then execute:
 
     $ bundle install
 
 ## Usage
+
 Add Cards to your Decks to help study
 
 ## Development
@@ -23,7 +23,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/<github vincentservio>/feetlockers. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/<github vincentservio>/feetlockers/blob/master/CODE_OF_CONDUCT.md).
-
 
 ## License
 
